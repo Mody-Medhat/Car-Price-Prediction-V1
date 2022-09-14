@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>ROYAL CARS - Car Rental HTML Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <!-- <link href="img/favicon.ico" rel="icon"> -->
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='lib/owlcarousel/assets/owl.carousel.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='lib//tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <!-- Template Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-dark py-3 px-lg-5 d-none d-lg-block">
+        <div class="row">
+            <div class="col-md-6 text-center text-lg-left mb-2 mb-lg-0">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text-body pr-3" href=""><i class="fa fa-phone-alt mr-2"></i>+012 345 6789</a>
+                    <span class="text-body">|</span>
+                    <a class="text-body px-3" href=""><i class="fa fa-envelope mr-2"></i>info@example.com</a>
+                </div>
+            </div>
+            <div class="col-md-6 text-center text-lg-right">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text-body px-3" href="">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a class="text-body px-3" href="">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a class="text-body px-3" href="">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a class="text-body px-3" href="">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a class="text-body pl-3" href="">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid position-relative nav-bar p-0">
+        <div class="position-relative px-lg-5" style="z-index: 9; background-color: #2B2E4A;">
+            <nav class="navbar navbar-expand-lg bg-secondary navbar-dark py-3 py-lg-0 pl-3 pl-lg-5">
+                <a href="" class="navbar-brand">
+                    <h1 class="text-uppercase text-primary mb-1">Royal Cars</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="http://localhost:50550//Home/Index/" class="nav-item nav-link">Home</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Car</a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <a href="http://localhost:50550//Car_finder/Cars_filter/" class="dropdown-item">Car
+                                    Finder</a>
+                                <a href="http://localhost:50550//Home/Predict/" class="dropdown-item">Car Price
+                                    Predict</a>
+
+                            </div>
+                        </div>
+                        <a href="http://localhost:50550/service.html" class="nav-item nav-link">Sell your car</a>
+
+                        <a href="http://localhost:50550/Home/About/" class="nav-item nav-link"> About</a>
+
+                        <a href="http://localhost:50550/Home/Contact/" class="nav-item nav-link">Contact</a>
+
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">registration</a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <a href="team.html" class="dropdown-item active">SinUP</a>
+                                <a href="testimonial.html" class="dropdown-item">SinIN</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+    <div class="cont">
+        <br>
+        <h1 class="hea">
+            <span>p</span>
+            <span>r</span>
+            <span>e</span>
+            <span>d</span>
+            <span>i</span>
+            <span>c</span>
+            <span>t</span>
+        </h1>
+
+        <hr>
+        <div class="All_cont">
+
+            <form action="/predict" , method="POST">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <div class="first_line">
+                            <div class="first_second_line">
+                                <label for="make">Brand</label>
+                                <select class="form-control" name="make" id="make" placeholder="Enter Car Make"
+                                    aria-label="Enter Car Make" style="background-color: #f7d8d3;">
+                                    <option>Brand </option>
+                                    <option>Chevrolet </option>
+                                    <option>Ford</option>
+                                    <option>Toyota</option>
+                                    <option>Volkswagen</option>
+                                    <option>Nissan</option>
+                                    <option>GMC</option>
+                                    <option>Honda</option>
+                                    <option>Mazda</option>
+                                    <option>Cadillac</option>
+                                    <option>Suzuki</option>
+                                    <option>Mercedes-Benz</option>
+                                    <option>Infiniti</option>
+                                    <option value="bmw">BMW</option>
+                                    <option>Audi</option>
+                                    <option>Volvo</option>
+                                    <option>Hyundai</option>
+                                    <option>Acura</option>
+                                    <option>Subaru</option>
+                                    <option>Kia</option>
+                                    <option>Mitsubishi</option>
+                                    <option>Lexus</option>
+                                    <option>Buick</option>
+                                    <option>Chrysler </option>
+                                    <option>Pontiac</option>
+                                    <option>Lincoln </option>
+                                    <option>Land Rover</option>
+                                    <option>Porsche</option>
+                                    <option>Oldsmobile</option>
+                                    <option>Saab</option>
+                                    <option>Aston Martin</option>
+                                    <option>Bentley</option>
+                                    <option>Plymouth</option>
+                                    <option>Ferrari</option>
+                                    <option>Fiat</option>
+                                    <option>Scion </option>
+                                    <option>Maserati</option>
+                                    <option>Lamborghini </option>
+                                    <option>Rolls Royce </option>
+                                    <option>Lotus </option>
+                                    <option>Tesla</option>
+                                    <option>Hummer </option>
+                                    <option>Maybach</option>
+                                    <option>Mclaren </option>
+                                    <option>Alfa Romeo</option>
+                                    <option>Genesis </option>
+                                    <option>Bugatti</option>
+                                    <option>Spyker</option>
+                                </select>
+                            </div>
+                            <div class="first_second_line">
+                                <label class="number_of_doors1" for="number_of_doors">Number Of Doors</label>
+                                <label class="number_of_doors2" for="number_of_doors">N.OF.Doors</label>
+                                <select class="form-control" name="number_of_doors" id="number_of_doors"
+                                    placeholder="Enter Number Of Doors" aria-label="Enter Number Of Doors"
+                                    style="background-color: #f7d8d3;">
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                </select>
+                            </div>
+                            <span class="vehicle_style">
+                                <div class="first_second_line">
+                                    <label for="vehicle_style">Vehicle Style</label>
+                                    <input class="form-control" type="text" , step="0.0001" name="vehicle_style"
+                                        id="vehicle_style" placeholder="Enter Vehicle Style"
+                                        aria-label="Enter Vehicle Style" style="background-color: #f7d8d3;">
+                                </div>
+                            </span>
+
+                        </div>
+                        <br />
+                        <div class="first_line">
+                            <span class="m_year_size">
+                                <div class="first_second_line">
+                                    <label for="model">model</label>
+                                    <input class="form-control" type="text" , name="model" id="model"
+                                        placeholder="Enter car Model" aria-label="Enter Latitude"
+                                        style="background-color: #f7d8d3;">
+                                </div>
+                            </span>
+
+                            <span class="m_year_size">
+                                <div class="first_second_line">
+                                    <label for="year">Year</label>
+                                    <input class="form-control" type="text" , name="year" id="year"
+                                        placeholder="Enter Car Year" aria-label="Enter Car Year"
+                                        style="background-color: #f7d8d3;">
+                                </div>
+                            </span>
+                            <span class="m_year_size">
+
+                                <div class="first_second_line">
+
+                                    <label for="city_mpg">City MPG</label>
+                                    <input class="form-control" type="number" , step="0.0001" name="city_mpg"
+                                        id="city_mpg" placeholder="Enter City MPG" aria-label="Enter City MPG"
+                                        style="background-color: #f7d8d3;">
+                                </div>
+                            </span>
+
+
+                        </div>
+                        <br />
+                        <div class="first_line">
+                            <span class="driven_wheels">
+
+                                <div class="first_second_line">
+
+                                    <label for="transmission_type">Transmission Type</label>
+                                    <select class="form-control" name="transmission_type" id="transmission_type"
+                                        placeholder="Enter Transmission Type" aria-label="Enter Transmission Type"
+                                        style="background-color: #f7d8d3;">
+                                        <option value="automatic">Automatic</option>
+                                        <option>Manual</option>
+                                        <option>Automated Manual</option>
+                                        <option>Direct Drive</option>
+                                    </select>
+                                </div>
+                            </span>
+                            <span class="driven_wheels">
+
+                                <div class="first_second_line">
+                                    <label for="driven_wheels">Driven Wheels</label>
+                                    <select class="form-control" name="driven_wheels" id="driven_wheels"
+                                        placeholder="Enter Driven Wheels" aria-label="Enter Driven Wheels"
+                                        style="background-color: #f7d8d3;">
+                                        <option>Front Wheel Drive</option>
+                                        <option>Rear Wheel Drive</option>
+                                        <option>All Wheel Drive </option>
+                                        <option>Four Wheel Drive</option>
+                                    </select>
+                                </div>
+                            </span>
+
+                        </div>
+                        <br />
+                        <div class="first_line">
+                            <span class="driven_wheels">
+
+                                <div class="first_second_line">
+
+                                    <label for="engine_hp">Engine Cylinders</label>
+                                    <input class="form-control" type="number" , step="0.0001" name="engine_cylinders"
+                                        id="engine_cylinders" placeholder="Enter Engine Cylinders"
+                                        aria-label="Enter Engine Cylinders" style="background-color: #f7d8d3;">
+                                </div>
+                            </span>
+                            <span class="driven_wheels">
+                                <div class="first_second_line">
+
+                                    <label for="engine_hp">Engine Horsepower</label>
+                                    <input class="form-control" type="number" , step="0.0001" name="engine_hp"
+                                        id="engine_hp" placeholder="Enter Engine Horsepower"
+                                        aria-label="Enter Engine Horsepower" style="background-color: #f7d8d3;">
+                                </div>
+                            </span>
+                        </div>
+                        <br />
+                        <div class="first_line">
+                            <span class="engine_fuel_type">
+                                <div class="first_second_line">
+
+                                    <label for="engine_fuel_type">Engine Fuel Type</label>
+                                    <select class="form-control" name="engine_fuel_type" id="engine_fuel_type"
+                                        placeholder="Enter Engine Fuel Type" aria-label="Enter Engine Fuel Type"
+                                        style="background-color: #f7d8d3;">
+                                        <option value="regular_unleaded">Regular Unleaded</option>
+                                        <option>Premium Unleaded (required)</option>
+                                        <option>Premium Unleaded (recommended)</option>
+                                        <option>Flex Fuel (unleaded/e85)</option>
+                                        <option>Diesel</option>
+                                        <option>Electric</option>
+                                        <option>Flex Fuel (premium unleaded required/e85)</option>
+                                        <option>Flex Fuel (premium unleaded recommended/e85)</option>
+                                        <option>Flex Fuel (unleaded/natural_gas)</option>
+                                        <option>Natural Gas</option>
+                                    </select>
+                                </div>
+                            </span>
+                            <span class="vehicle_size">
+
+                                <div class="first_second_line">
+
+                                    <label for="vehicle_size">Vehicle Size</label>
+                                    <select class="form-control" name="vehicle_size" id="vehicle_size"
+                                        placeholder="Enter Vehicle Size" aria-label="Enter Vehicle Size"
+                                        style="background-color: #f7d8d3;">
+                                        <option value="compact">Compact</option>
+                                        <option>Midsize</option>
+                                        <option>Large</option>
+                                    </select>
+                                </div>
+                            </span>
+
+                        </div>
+                        <br />
+                        <div class="first_line">
+                            <span class="highway_mpg">
+                                <div class="first_second_line">
+
+                                    <label for="highway_mpg">Highway MPG</label>
+                                    <input class="form-control" type="number" , step="0.0001" name="highway_mpg"
+                                        id="highway_mpg" placeholder="Enter Highway MPG" aria-label="Enter Highway MPG"
+                                        style="background-color: #f7d8d3;">
+                                </div>
+                            </span>
+                            <div class="first_second_line">
+                                <br />
+                                <input class="btn btn-outline-warning btn-lg btn-block" type="submit" value="predict">
+                            </div>
+
+                        </div>
+                        <hr>
+
+                        <div class="last_line">
+
+                            <h5 style="color: #ffff;"> {{text}}<strong style="color: rgb(255, 166, 0);">{{ pred_val }}</strong>
+                                <strong style="color: rgb(235, 161, 51);">{{sympol}}</strong>
+                            </h5>
+                        </div>
+            </form>
+        </div>
+    </div>
+    </div>
+
+    <!-- Vendor Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="owl-carousel vendor-carousel">
+                <div class="p-4">
+                    <img src="{{ url_for('static', filename='logo/bmw-flat-logo.png') }}" />
+                </div>
+                <div class="p-4">
+                    <img src="{{ url_for('static', filename='logo/ferrari-logo.png') }}" />
+                </div>
+                <div class="p-4">
+                    <img src="{{ url_for('static', filename='logo/tesla-logo.png') }}" />
+                </div>
+                <div class="p-4">
+                    <img src="{{ url_for('static', filename='logo/jeep-new-vector-logo.png') }}" />
+                </div>
+                <div class="p-4">
+                    <img
+                        src="{{ url_for('static', filename='logo/lamborghini_flat-logo_brandlogos.net_tysci.png') }}" />
+                </div>
+                <div class="p-4">
+                    <img src="{{ url_for('static', filename='logo/mercedes-benz-star-logo.png') }}" />
+                </div>
+                <div class="p-4">
+                    <img src="{{ url_for('static', filename='logo/peugeot-logo.png') }}" />
+                </div>
+                <div class="p-4">
+                    <img src="{{ url_for('static', filename='logo/toyota-3d-vector-logo.png') }}" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Vendor End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-secondary py-5 px-sm-3 px-md-5">
+        <div class="row pt-5">
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="text-uppercase text-light mb-4">Get In Touch</h4>
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-white mr-3"></i>123 Street, New York, USA</p>
+                <p class="mb-2"><i class="fa fa-phone-alt text-white mr-3"></i>+012 345 67890</p>
+                <p><i class="fa fa-envelope text-white mr-3"></i>info@example.com</p>
+                <h6 class="text-uppercase text-white py-2">Follow Us</h6>
+                <div class="d-flex justify-content-start">
+                    <a class="btn btn-lg btn-dark btn-lg-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-lg btn-dark btn-lg-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-lg btn-dark btn-lg-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-lg btn-dark btn-lg-square" href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="text-uppercase text-light mb-4">Usefull Links</h4>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-body mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>Private
+                        Policy</a>
+                    <a class="text-body mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>Term &
+                        Conditions</a>
+                    <a class="text-body mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>New Member
+                        Registration</a>
+                    <a class="text-body mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>Affiliate
+                        Programme</a>
+                    <a class="text-body mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>Return &
+                        Refund</a>
+                    <a class="text-body" href="#"><i class="fa fa-angle-right text-white mr-2"></i>Help & FQAs</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="text-uppercase text-light mb-4">Car Gallery</h4>
+                <div class="row mx-n1">
+                    <div class="col-4 px-1 mb-2">
+                        <a href="">
+                            <img class="w-100" src="{{ url_for('static', filename='img/gallery-1.jpg') }}" />
+                        </a>
+                    </div>
+                    <div class="col-4 px-1 mb-2">
+                        <a href="">
+                            <img class="w-100" src="{{ url_for('static', filename='img/gallery-2.jpg') }}" />
+                        </a>
+                    </div>
+                    <div class="col-4 px-1 mb-2">
+                        <a href="">
+                            <img class="w-100" class="w-100"
+                                src="{{ url_for('static', filename='img/gallery-3.jpg') }}" />
+                        </a>
+                    </div>
+                    <div class="col-4 px-1 mb-2">
+                        <a href="">
+                            <img class="w-100" src="{{ url_for('static', filename='img/gallery-4.jpg') }}" />
+                        </a>
+                    </div>
+                    <div class="col-4 px-1 mb-2">
+                        <a href="">
+                            <img class="w-100" src="{{ url_for('static', filename='img/gallery-5.jpg') }}" />
+                        </a>
+                    </div>
+                    <div class="col-4 px-1 mb-2">
+                        <a href="">
+                            <img class="w-100" src="{{ url_for('static', filename='img/gallery-6.jpg') }}" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="text-uppercase text-light mb-4">Newsletter</h4>
+                <p class="mb-4">Volup amet magna clita tempor. Tempor sea eos vero ipsum. Lorem lorem sit sed elitr sed
+                    kasd et</p>
+                <div class="w-100 mb-3">
+                    <div class="input-group">
+                        <input type="text" class="form-control bg-dark border-dark" style="padding: 25px;"
+                            placeholder="Your Email">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary text-uppercase px-3">Sign Up</button>
+                        </div>
+                    </div>
+                </div>
+                <i>Lorem sit sed elitr sed kasd et</i>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-dark py-4 px-sm-3 px-md-5">
+        <p class="mb-2 text-center text-body">&copy; <a href="#">Your Car</a>. All Rights Reserved.</p>
+
+        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+        <p class="m-0 text-center text-body">Designed by <a href="">Assuit Team</a></p>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg  btn-outline-primary btn-lg-square  back-to-top" style=" border-radius: 35px;"><i
+            class="fa fa-arrow-circle-up "></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script type=text/javascript src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <script type=text/javascript
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+    <script type=text/javascript rel="stylesheet"
+        href="{{ url_for('static', filename='lib/easing/easing.min.js') }}"></script>
+
+    <script type=text/javascript src="{{ url_for('static', filename='lib/waypoints/waypoints.min.js') }}"></script>
+
+    <script type=text/javascript src="{{ url_for('static', filename='lib/owlcarousel/owl.carousel.min.js') }}"></script>
+
+    <script type=text/javascript src="{{ url_for('static', filename='lib/tempusdominus/js/moment.min.js') }}"></script>
+
+    <script type=text/javascript
+        src="{{ url_for('static', filename='lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
+
+    <script type=text/javascript
+        src="{{ url_for('static', filename='lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+
+
+    <!-- Template Javascript -->
+    <script type=text/javascript src="{{ url_for('static', filename='js/main.js') }}"></script>
+    
+</body>
+
+</html>
