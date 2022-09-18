@@ -126,6 +126,7 @@
                         <div class="first_line">
                             <span class="m_year_size">
                                 <div class="first_second_line">
+<<<<<<< HEAD:templates/index.html
                                     <label for="make">Brand</label>
                                     <select class="selectpicker form-control" name="make" id="make"
                                         onchange="load_car_models(this.id,'model', 'engine_fuel_type' , 'vehicle_style')"
@@ -133,6 +134,18 @@
                                         {% for make in makes %}
                                         <option value="{{ make }}">{{ make }}</option>
                                         {% endfor %}
+=======
+                                    <label for="vehicle_style">Vehicle Style</label>
+                                   <select class="form-control" name="vehicle_style" id="vehicle_style"
+                                        placeholder="Enter Vehicle Style" aria-label="Enter Vehicle Style"
+                                        style="background-color: #f7d8d3;">
+                                        <option>Select Style...</option>
+                                        <option>Sedan</option>
+                                        <option>Coupe</option>
+                                        <option>4dr SUV</option>
+                                        <option>Convertible</option>
+                                        <option>4dr Hatchback</option>
+>>>>>>> 11db3bc70fa1aaeeb66719dc05835716ad4f8706:templates/predict.html
                                     </select>
                                 </div>
                             </span>
@@ -174,9 +187,16 @@
                             </span>
                             <span class="m_year_size">
                                 <div class="first_second_line">
+<<<<<<< HEAD:templates/index.html
                                     <label for="vehicle_style">Vehicle Style</label>
                                     <select class="selectpicker form-control" name="vehicle_style" id="vehicle_style"
                                         placeholder="Enter Vehicle Style" aria-label="Enter Vehicle Style"
+=======
+
+                                    <label for="city_mpg">City MPG</label>
+                                    <input class="form-control" type="number" , step="1" name="city_mpg"
+                                        id="city_mpg" placeholder="Enter City MPG" aria-label="Enter City MPG"
+>>>>>>> 11db3bc70fa1aaeeb66719dc05835716ad4f8706:templates/predict.html
                                         style="background-color: #f7d8d3;">
                                     </select>
 
@@ -233,7 +253,12 @@
                         <div class="first_line">
                             <span class="driven_wheels">
                                 <div class="first_second_line">
+<<<<<<< HEAD:templates/index.html
                                     <label id="engine_cylinders_label" for="engine_cylinders">Engine Cylinders</label>
+=======
+
+                                    <label for="engine_hp">Engine Cylinders</label>
+>>>>>>> 11db3bc70fa1aaeeb66719dc05835716ad4f8706:templates/predict.html
                                     <input class="form-control" type="number" , step="1" name="engine_cylinders"
                                         id="engine_cylinders" placeholder="Enter Engine Cylinders"
                                         aria-label="Enter Engine Cylinders" style="background-color: #f7d8d3;">
@@ -241,10 +266,18 @@
                             </span>
                             <span class="driven_wheels">
                                 <div class="first_second_line">
+<<<<<<< HEAD:templates/index.html
                                     <label id="engine_hp_label" for="engine_hp">Engine Horsepower</label>
                                     <input class="form-control" type="number" , step="1" name="engine_hp" id="engine_hp"
                                         placeholder="Enter Engine Horsepower" aria-label="Enter Engine Horsepower"
                                         style="background-color: #f7d8d3;">
+=======
+
+                                    <label for="engine_hp">Engine Horsepower</label>
+                                    <input class="form-control" type="number" , step="1" name="engine_hp"
+                                        id="engine_hp" placeholder="Enter Engine Horsepower"
+                                        aria-label="Enter Engine Horsepower" style="background-color: #f7d8d3;">
+>>>>>>> 11db3bc70fa1aaeeb66719dc05835716ad4f8706:templates/predict.html
                                 </div>
                             </span>
                         </div>
@@ -253,7 +286,50 @@
                         <div class="first_line">
                             <span class="driven_wheels">
                                 <div class="first_second_line">
+<<<<<<< HEAD:templates/index.html
                                     <label id="highway_mpg_label" for="highway_mpg">Highway MPG</label>
+=======
+
+                                    <label for="engine_fuel_type">Engine Fuel Type</label>
+                                    <select class="form-control" name="engine_fuel_type" id="engine_fuel_type"
+                                        placeholder="Enter Engine Fuel Type" aria-label="Enter Engine Fuel Type"
+                                        style="background-color: #f7d8d3;">
+                                        <option value="regular_unleaded">Regular Unleaded</option>
+                                        <option>Premium Unleaded (required)</option>
+                                        <option>Premium Unleaded (recommended)</option>
+                                        <option>Flex Fuel (unleaded/e85)</option>
+                                        <option>Diesel</option>
+                                        <option>Electric</option>
+                                        <option>Flex Fuel (premium unleaded required/e85)</option>
+                                        <option>Flex Fuel (premium unleaded recommended/e85)</option>
+                                        <option>Flex Fuel (unleaded/natural_gas)</option>
+                                        <option>Natural Gas</option>
+                                    </select>
+                                </div>
+                            </span>
+                            <span class="vehicle_size">
+
+                                <div class="first_second_line">
+
+                                    <label for="vehicle_size">Vehicle Size</label>
+                                    <select class="form-control" name="vehicle_size" id="vehicle_size"
+                                        placeholder="Enter Vehicle Size" aria-label="Enter Vehicle Size"
+                                        style="background-color: #f7d8d3;">
+                                        <option value="compact">Compact</option>
+                                        <option>Midsize</option>
+                                        <option>Large</option>
+                                    </select>
+                                </div>
+                            </span>
+
+                        </div>
+                        <br />
+                        <div class="first_line">
+                            <span class="highway_mpg">
+                                <div class="first_second_line">
+
+                                    <label for="highway_mpg">Highway MPG</label>
+>>>>>>> 11db3bc70fa1aaeeb66719dc05835716ad4f8706:templates/predict.html
                                     <input class="form-control" type="number" , step="1" name="highway_mpg"
                                         id="highway_mpg" placeholder="Enter Highway MPG" aria-label="Enter Highway MPG"
                                         style="background-color: #f7d8d3;">
