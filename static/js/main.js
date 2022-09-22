@@ -130,34 +130,59 @@
 function required() {
 
     // data send from form to card
-    var year = document.Modelform.year.value;
-    var engine_hp = document.Modelform.engine_hp.value;
-    var engine_cylinders = document.Modelform.engine_cylinders.value;
-    var highway_mpg = document.Modelform.highway_mpg.value;
-    var city_mpg = document.Modelform.city_mpg.value;
-    if (year === "") {
+    const year = document.getElementById('year');
+    const engine_hp = document.getElementById('engine_hp');
+    const engine_cylinders = document.getElementById('engine_cylinders');
+    const highway_mpg = document.getElementById('highway_mpg');
+    const city_mpg = document.getElementById('city_mpg');
+
+
+    if (year.value === "") {
         document.getElementById("year_label").style.color = "rgb(255, 166, 0)";
-        // return true;
-    }
-    if (engine_hp === "") {
-        document.getElementById("engine_hp_label").style.color = "rgb(255, 166, 0)";
-        // return true;
-    }
-    if (engine_cylinders === "") {
-        document.getElementById("engine_cylinders_label").style.color = "rgb(255, 166, 0)";
-        // return true;
-    }
-    if (highway_mpg === "") {
-        document.getElementById("highway_mpg_label").style.color = "rgb(255, 166, 0)";
-        // return true;
-    }
-    if (city_mpg === "") {
-        document.getElementById("city_mpg_label").style.color = "rgb(255, 166, 0)";
-        // return true;
+        year.style.borderColor = "red";
+        y = 0;
     }
     else {
+        y = 1;
+    }
+    if (engine_hp.value === "") {
+        document.getElementById("engine_hp_label").style.color = "rgb(255, 166, 0)";
+        engine_hp.style.borderColor = "rgb(255, 166, 0)";
+        hp = 0;
+    }
+    else {
+        hp = 1;
+    }
+    if (engine_cylinders.value === "") {
+        document.getElementById("engine_cylinders_label").style.color = "rgb(255, 166, 0)";
+        engine_cylinders.style.borderColor = "rgb(255, 166, 0)";
+        cy = 0;
+    }
+    else {
+        cy = 1;
+    }
+    if (highway_mpg.value === "") {
+        document.getElementById("highway_mpg_label").style.color = "rgb(255, 166, 0)";
+        highway_mpg.style.borderColor = "rgb(255, 166, 0)";
+        h = 0;
+    }
+    else {
+        h = 1;
+    }
+    if (city_mpg.value === "") {
+        document.getElementById("city_mpg_label").style.color = "rgb(255, 166, 0)";
+        city_mpg.style.borderColor = "rgb(255, 166, 0)";
+        c = 0;
+    }
+    else {
+        c = 1;
+    }
+    //return condition//
+    if (y == 1 && hp == 1 && cy == 1 && h == 1 && c == 1) {
         return true;
     }
+    else
+        return false;
 }
 
 
@@ -202,6 +227,19 @@ var myApp = new function () {
         win.document.write(style);
         win.document.write(div.outerHTML);
         win.print();
+    }
+}
+
+window.onscroll = function () { myFunction() };
+
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+    if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky")
+    } else {
+        navbar.classList.remove("sticky");
     }
 }
 

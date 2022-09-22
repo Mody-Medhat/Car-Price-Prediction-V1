@@ -8,12 +8,10 @@ from Preprocess import preprocess_new
 
 reg_model = joblib.load('LinearRegressionModel.pkl')
 car = pd.read_csv('CarData.csv')
-## add new columns
+# add new columns
 car["Make-Model"] = car['Make'].astype(str) + " " + car["Model"]
-car["fuel_type"] = car['Make'].astype(
-    str) + " " + car["Engine Fuel Type"].astype(str)
-car["vehicle_style_make"] = car['Make'].astype(
-    str) + " " + car["Vehicle Style"].astype(str)
+car["fuel_type"] = car['Make'].astype(str) + " " + car["Engine Fuel Type"].astype(str)
+car["vehicle_style_make"] = car['Make'].astype(str) + " " + car["Vehicle Style"].astype(str)
 
 
 # Intialize the Flask APP
@@ -38,7 +36,7 @@ def index():
                            vehicle_styles=vehicle_styles,
                            fuel_types=fuel_types,
                            Engine_Fuel_Types=Engine_Fuel_Types,
-                           car_styles = car_styles)
+                           car_styles=car_styles)
 
 
 @app.route('/predict', methods=['GET', 'POST'])
@@ -47,7 +45,13 @@ def predict():
     # DropDownList
     make = request.form['make']
     # Input
-    model = request.form['model']
+    try:
+        model = request.form['model']
+        model = model.split(' ', 1)[1]
+
+    except KeyError:
+        meg = 'Please Select Car Brand Name!!'
+        return meg
     try:
         # input
         year = int(request.form['year'])
@@ -60,12 +64,11 @@ def predict():
         # Input
         city_mpg = float(request.form['city_mpg'])
     except ValueError:
-        year = 0
-        engine_hp = 0
-        engine_cylinders = 0
-        highway_mpg = 0
-        city_mpg = 0
-        # DropDownList
+        meg = 'There Is An Empty Field Please Recheck The Data!!'
+        return meg
+    # except UnboundLocalError:
+
+    # DropDownList
     engine_fuel_type = request.form['engine_fuel_type']
     engine_fuel_type = engine_fuel_type.split(' ', 1)[1]
     # DropDownList
@@ -81,7 +84,7 @@ def predict():
     vehicle_style = vehicle_style.split(' ', 1)[1]
 
     X_new = pd.DataFrame({'make': [make],
-                          'make_model': [model],
+                          'model': [model],
                           'year': [year],
                           'engine_fuel_type': [engine_fuel_type],
                           'engine_hp': [engine_hp],
@@ -111,5 +114,5 @@ def predict():
 
 # Run the App from the Terminal
 if __name__ == '__main__':
-  #  app.run(debug=True,host='192.168.1.111',port=5000)
+    # app.run(debug=True,host='192.168.1.111',port=5000)
     app.run(port=6080, debug=True)

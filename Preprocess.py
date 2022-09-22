@@ -29,8 +29,6 @@ df = pd.read_csv(FILE_PATH)
 
 
 # In[4]:
-df["make_model"] = df['Make'].astype(str) + " " + df["Model"]
-
 df.columns = df.columns.str.lower().str.replace(' ', '_')
 string_columns = list(df.dtypes[df.dtypes == 'object'].index)
 for col in string_columns:
@@ -54,7 +52,7 @@ df['log_price'] = np.log1p(df.price)
 
 
 # Split the whole Dataset to Feature & Target
-X = df.drop(['price', 'log_price', 'popularity', 'model'], axis=1)
+X = df.drop(['price', 'log_price', 'popularity'], axis=1)
 y = df['log_price']
 
 
