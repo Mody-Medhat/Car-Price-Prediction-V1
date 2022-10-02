@@ -127,6 +127,8 @@
 
 })(jQuery);
 
+
+
 function required() {
 
     // data send from form to card
@@ -242,30 +244,33 @@ function myFunction() {
         navbar.classList.remove("sticky");
     }
 }
+function PrintData() {
+    var make = document.getElementById("make").value;
+    var model = document.getElementById("model").value;
+    console.log(model);
+    var year = document.getElementById("year").value;
+    var engine_fuel_type = document.getElementById("engine_fuel_type").value;
+    var engine_hp = document.getElementById("engine_hp").value;
+    var engine_cylinders = document.getElementById("engine_cylinders").value;
+    var transmission_type = document.getElementById("transmission_type").value;
+    var driven_wheels = document.getElementById("driven_wheels").value;
+    var number_of_doors = document.getElementById("number_of_doors").value;
+    var vehicle_size = document.getElementById("vehicle_size").value;
+    var vehicle_style = document.getElementById("vehicle_style").value;
+    var highway_mpg = document.getElementById("highway_mpg").value;
+    var city_mpg = document.getElementById("city_mpg").value;
 
-//     //var make = document.Modelform.make.value;
-//    // var model = document.Modelform.model.value;
-//    var year = document.Modelform.year.value;
-//    // var engine_fuel_type = document.Modelform.engine_fuel_type.value;
-//     var engine_hp = document.Modelform.engine_hp.value;
-//     var engine_cylinders = document.Modelform.engine_cylinders.value;
-//    // var transmission_type = document.Modelform.transmission_type.value;
-//    // var driven_wheels = document.Modelform.driven_wheels.value;
-//    // var number_of_doors = document.Modelform.number_of_doors.value;
-//     //var vehicle_size = document.Modelform.vehicle_size.value;
-//     //var vehicle_style = document.Modelform.vehicle_style.value;
-//     var highway_mpg = document.Modelform.highway_mpg.value;
-//     var city_mpg = document.Modelform.city_mpg.value;
-// document.getElementById('makeData').innerHTML = document.Modelform.make.value;
-// document.getElementById('modelData').innerHTML = document.Modelform.model.value;
-// document.getElementById('yearData').innerHTML = document.Modelform.year.value;
-// document.getElementById('engine_fuel_typeData').innerHTML = document.Modelform.engine_fuel_type.value;
-// document.getElementById('engine_hpData').innerHTML = document.Modelform.engine_hp.value;
-// document.getElementById('engine_cylindersData').innerHTML = document.Modelform.engine_cylinders.value;
-// document.getElementById('transmission_typeData').innerHTML = document.Modelform.transmission_type.value;
-// document.getElementById('driven_wheelsData').innerHTML = document.Modelform.driven_wheels.value;
-// document.getElementById('number_of_doorsData').innerHTML = document.Modelform.number_of_doors.value;
-// document.getElementById('vehicle_sizeData').innerHTML = document.Modelform.vehicle_size.value;
-// document.getElementById('vehicle_styleData').innerHTML = document.Modelform.vehicle_style.value;
-// document.getElementById('highway_mpgData').innerHTML = document.Modelform.highway_mpg.value;
-// document.getElementById('city_mpgData').innerHTML = document.Modelform.city_mpg.value;
+    document.getElementById('makeData').innerHTML = make;
+    document.getElementById('modelData').innerHTML = model;
+    document.getElementById('yearData').innerHTML = year;
+    document.getElementById('engine_fuel_typeData').innerHTML = engine_fuel_type;
+    document.getElementById('engine_hpData').innerHTML = engine_hp;
+    document.getElementById('engine_cylindersData').innerHTML = engine_cylinders;
+    document.getElementById('transmission_typeData').innerHTML = transmission_type;
+    document.getElementById('driven_wheelsData').innerHTML = driven_wheels;
+    document.getElementById('number_of_doorsData').innerHTML = number_of_doors;
+    document.getElementById('vehicle_sizeData').innerHTML = vehicle_size;
+    document.getElementById('vehicle_styleData').innerHTML = vehicle_style;
+    document.getElementById('highway_mpgData').innerHTML = highway_mpg;
+    document.getElementById('city_mpgData').innerHTML = city_mpg;
+}

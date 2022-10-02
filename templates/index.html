@@ -2,9 +2,8 @@
 
 {% block head %}
 <title>ROYAL CARS - Car Rental HTML Template</title>
+
 {% endblock %}
-
-
 
 {% block body %}
 <div class="cont">
@@ -19,6 +18,7 @@
         <span>t</span>
     </h1>
     <hr>
+    <!--  -->
     <div class="All_cont">
         <form method="post" accept-charset="utf-8" name="Modelform" onsubmit="return required()">
             <div class="form-row">
@@ -171,24 +171,22 @@
                             <label for="engine_fuel_type">Engine Fuel Type</label>
                             <select class="form-control" name="engine_fuel_type" id="engine_fuel_type"
                                 placeholder="Enter Engine Fuel Type" aria-label="Enter Engine Fuel Type"
-                                style="background-color: #f7d8d3; margin-right: -15px;" required="1">
+                                style="background-color: #f7d8d3; width: 342px" required="1">
                             </select>
                         </div>
                         <div class="first_second_line">
                             <br />
-                            <input class="btn btn-outline-warning btn-lg btn-block" type="submit" value="predict"
-                                onclick="send_data()" style="margin-left: 29px;">
-                            <!-- <input class="btn btn-outline-warning btn-lg btn-block popup-btn" type="submit"
-                                value="predict" onclick="send_data()" style="margin-left: 29px;"> -->
+                            <!-- <input class="btn btn-outline-warning btn-lg btn-block" type="submit" value="predict"
+                                onclick="send_data()" style="margin-left: 29px;">  -->
+                            <input class="btn btn-outline-warning btn-lg btn-block popup-btn" type="submit"
+                                value="predict" onclick=" send_data();PrintData()" style="margin-left: 29px;">
                         </div>
                     </div>
                     <hr>
                     <div class="last_line">
                         <center>
                             <h5 style="color: #ffff;"> {{text}}
-                                <strong style="color: rgb(255, 166, 0);">{{text1}}</strong>
                                 <strong style="color: rgb(255, 166, 0);" id="prediction"></strong>
-                                <strong style="color: rgb(235, 161, 51);">{{sympol}}</strong>
                             </h5>
                         </center>
                     </div>
@@ -205,22 +203,23 @@
                             <img src="{{ url_for('static', filename='img/car-rent-4.png') }}" />
                         </div>
                         <div class="info">
-                            <h2>{{make}}<br><span>{{model}}</span></h2>
-                            <h5 style="color: rgb(255, 166, 0);" id="yearData"></h5>
-                            <h5 style="color: rgb(255, 166, 0);" id="engine_fuel_typeData"></h5>
-                            <h5 style="color: rgb(255, 166, 0);" id="engine_hpData"></h5>
-                            <h5 style="color: rgb(255, 166, 0);" id="engine_cylindersData"></h5>
-                            <h5 style="color: rgb(255, 166, 0);" id="transmission_typeData"></h5>
-                            <h5 style="color: rgb(255, 166, 0);" id="driven_wheelsData"></h5>
-                            <h5 style="color: rgb(255, 166, 0);" id="number_of_doorsData"></h5>
-                            <h5 style="color: rgb(255, 166, 0);" id="vehicle_sizeData"></h5>
-                            <h5 style="color: rgb(255, 166, 0);" id="vehicle_styleData"></h5>
-                            <h5 style="color: rgb(255, 166, 0);" id="highway_mpgData"></h5>
-                            <h5 style="color: rgb(255, 166, 0);" id="city_mpgData"></h5>
-                            <span class="price" style="color: rgb(255, 166, 0);" id="prediction"></span>
-                            <!--<a href="#" class="add-cart-btn">Add to Cart</a>-->
-                            <!--<a href="javascript:printDiv('DataPrint')" class="add-cart-btn" >Print</a><br>-->
-                            <input type='button' value='Print Content' onclick='myApp.printDiv()' />
+                            <h2 id="makeData"></h2>
+                            <span id="modelData" style="color: rgb(255, 166, 0);">t</span>
+                            <h5 style="color: rgb(255, 166, 0);" id="yearData">t</h5>
+                            <h5 style="color: rgb(255, 166, 0);" id="engine_fuel_typeData">t</h5>
+                            <h5 style="color: rgb(255, 166, 0);" id="engine_hpData">t</h5>
+                            <h5 style="color: rgb(255, 166, 0);" id="engine_cylindersData">t/h5>
+                                <h5 style="color: rgb(255, 166, 0);" id="transmission_typeData">t</h5>
+                                <h5 style="color: rgb(255, 166, 0);" id="driven_wheelsData">t</h5>
+                                <h5 style="color: rgb(255, 166, 0);" id="number_of_doorsData">t</h5>
+                                <h5 style="color: rgb(255, 166, 0);" id="vehicle_sizeData">t</h5>
+                                <h5 style="color: rgb(255, 166, 0);" id="vehicle_styleData">t</h5>
+                                <h5 style="color: rgb(255, 166, 0);" id="highway_mpgData">t</h5>
+                                <h5 style="color: rgb(255, 166, 0);" id="city_mpgData">t</h5>
+                                <span class="price" style="color: rgb(255, 166, 0);" id="prediction"></span>
+                                <!--<a href="#" class="add-cart-btn">Add to Cart</a>-->
+                                <!--<a href="javascript:printDiv('DataPrint')" class="add-cart-btn" >Print</a><br>-->
+                                <input type='button' value='Print Content' onclick='myApp.printDiv()' />
                         </div>
                     </div>
                 </div>
@@ -236,7 +235,7 @@
         var Make = document.getElementById(make_id);
         var car_model = document.getElementById(model_id);
         var fue_type = document.getElementById(fuel_type_id);
-        vehicle_style = document.getElementById(vehicle_style_id);
+        var vehicle_style = document.getElementById(vehicle_style_id);
         console.log(Make.value);
         car_model.value = "";
         car_model.innerHTML = "";
@@ -284,7 +283,9 @@
         }
         {% endfor %}
     }
+    // function PrintData() {
 
+    // }
     function form_handler(event) {
         event.preventDefault(); // Don't submit the form normally
     }
@@ -300,7 +301,6 @@
         xhr.onreadystatechange = function () {
             if (xhr.readyState == XMLHttpRequest.DONE) {
                 document.getElementById('prediction').innerHTML = xhr.responseText;
-
             }
         };
 

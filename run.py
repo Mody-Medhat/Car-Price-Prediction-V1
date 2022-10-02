@@ -44,6 +44,7 @@ def index():
 def predict():
     # DropDownList
     make = request.form['make']
+    print(make)
     # Input
     try:
         model = request.form['model']
@@ -82,7 +83,6 @@ def predict():
     # DropDownList
     vehicle_style = request.form['vehicle_style']
     vehicle_style = vehicle_style.split(' ', 1)[1]
-
     X_new = pd.DataFrame({'make': [make],
                           'model': [model],
                           'year': [year],
@@ -96,7 +96,7 @@ def predict():
                           'vehicle_style': [vehicle_style],
                           'highway_mpg': [highway_mpg],
                           'city_mpg': [city_mpg]})
-
+    
     # Call the Function and Preprocess the New Instances
     X_processed = preprocess_new(X_new)
     # call the Model and predict
