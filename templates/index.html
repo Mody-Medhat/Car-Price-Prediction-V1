@@ -2,6 +2,7 @@
 
 {% block head %}
 <title>ROYAL CARS - Car Rental HTML Template</title>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
 
 {% endblock %}
 
@@ -27,8 +28,8 @@
                         <span class="m_year_size">
                             <div class="first_second_line">
                                 <label for="make">Brand</label>
-                                <select class="selectpicker form-control" name="make" id="make"
-                                    onchange="load_car_models(this.id,'model', 'engine_fuel_type' , 'vehicle_style')"
+                                <select class="form-control select2" name="make" id="make"
+                                    onchange="load_car_models(this.id,'model', 'engine_fuel_type' , 'vehicle_style');AddOption()"
                                     required="1" style="background-color: #f7d8d3;">
                                     {% for make in makes %}
                                     <option value="{{ make }}">{{ make }}</option>
@@ -40,17 +41,23 @@
                         <span class="m_year_size">
                             <div class="first_second_line">
                                 <label id="model_label" for="model">Model</label>
-                                <select class="selectpicker form-control" , name="model" id="model"
+                                <select class="js-example-basic-single form-control selectpicker" , name="model"
+                                    id="model"
+                                    onchange="load_car_vehicle_style(this.id , 'vehicle_style');removeduplicate()"
                                     placeholder="Enter car Model" aria-label="Enter Latitude"
                                     style="background-color: #f7d8d3;" required="1">
+                                    <!-- <option value="" selected disabled hidden>Choose here</option> -->
+
+                                    <!-- <option value="" selected>Select Car Model</option> -->
+
                                 </select>
                             </div>
                         </span>
                         <span class="m_year_size">
                             <div class="first_second_line">
                                 <label id="year_label" for="year">Year</label>
-                                <input class="form-control" type="text" , name="year" id="year"
-                                    placeholder="Enter Car Year" aria-label="Enter Car Year"
+                                <input class="date-own form-control" type="text" , name="year" id="year"
+                                    placeholder="Enter Car Year" aria-label="Enter Car Year" min="1900" max="2099"
                                     style="background-color: #f7d8d3;">
                             </div>
                         </span>
@@ -145,7 +152,6 @@
                         </span>
                     </div>
                     <br />
-
                     <div class="first_line">
                         <span class="driven_wheels">
                             <div class="first_second_line">
@@ -174,12 +180,14 @@
                                 style="background-color: #f7d8d3; width: 342px" required="1">
                             </select>
                         </div>
+
                         <div class="first_second_line">
                             <br />
                             <!-- <input class="btn btn-outline-warning btn-lg btn-block" type="submit" value="predict"
                                 onclick="send_data()" style="margin-left: 29px;">  -->
                             <input class="btn btn-outline-warning btn-lg btn-block popup-btn" type="submit"
-                                value="predict" onclick=" send_data();PrintData()" style="margin-left: 29px;">
+                                value="predict" onclick=" send_data();PrintData();changeImage()"
+                                style="margin-left: 29px;">
                         </div>
                     </div>
                     <hr>
@@ -200,26 +208,27 @@
                     <div class="popup-card">
                         <a><i class="fa fa-times close-btn"></i></a>
                         <div class="product-img">
-                            <img src="{{ url_for('static', filename='img/car-rent-4.png') }}" />
+                            <!-- <img src="{{ url_for('static', filename='logo/tesla-logo.png') }}" id="BrandImg" /> -->
+                            <img src="../static/BrandImg/404 wanted.png" alt="Logo Not Found" id="BrandImg">
                         </div>
                         <div class="info">
                             <h2 id="makeData"></h2>
-                            <span id="modelData" style="color: rgb(255, 166, 0);">t</span>
-                            <h5 style="color: rgb(255, 166, 0);" id="yearData">t</h5>
-                            <h5 style="color: rgb(255, 166, 0);" id="engine_fuel_typeData">t</h5>
-                            <h5 style="color: rgb(255, 166, 0);" id="engine_hpData">t</h5>
-                            <h5 style="color: rgb(255, 166, 0);" id="engine_cylindersData">t/h5>
-                                <h5 style="color: rgb(255, 166, 0);" id="transmission_typeData">t</h5>
-                                <h5 style="color: rgb(255, 166, 0);" id="driven_wheelsData">t</h5>
-                                <h5 style="color: rgb(255, 166, 0);" id="number_of_doorsData">t</h5>
-                                <h5 style="color: rgb(255, 166, 0);" id="vehicle_sizeData">t</h5>
-                                <h5 style="color: rgb(255, 166, 0);" id="vehicle_styleData">t</h5>
-                                <h5 style="color: rgb(255, 166, 0);" id="highway_mpgData">t</h5>
-                                <h5 style="color: rgb(255, 166, 0);" id="city_mpgData">t</h5>
-                                <span class="price" style="color: rgb(255, 166, 0);" id="prediction"></span>
-                                <!--<a href="#" class="add-cart-btn">Add to Cart</a>-->
-                                <!--<a href="javascript:printDiv('DataPrint')" class="add-cart-btn" >Print</a><br>-->
-                                <input type='button' value='Print Content' onclick='myApp.printDiv()' />
+                            <span id="modelData" style="color: rgb(255, 166, 0);"></span>
+                            <h5 style="color: rgb(255, 166, 0);" id="yearData"></h5>
+                            <h5 style="color: rgb(255, 166, 0);" id="engine_fuel_typeData"></h5>
+                            <h5 style="color: rgb(255, 166, 0);" id="engine_hpData"></h5>
+                            <h5 style="color: rgb(255, 166, 0);" id="engine_cylindersData"></h5>
+                            <h5 style="color: rgb(255, 166, 0);" id="transmission_typeData"></h5>
+                            <h5 style="color: rgb(255, 166, 0);" id="driven_wheelsData"></h5>
+                            <h5 style="color: rgb(255, 166, 0);" id="number_of_doorsData"></h5>
+                            <h5 style="color: rgb(255, 166, 0);" id="vehicle_sizeData"></h5>
+                            <h5 style="color: rgb(255, 166, 0);" id="vehicle_styleData"></h5>
+                            <h5 style="color: rgb(255, 166, 0);" id="highway_mpgData"></h5>
+                            <h5 style="color: rgb(255, 166, 0);" id="city_mpgData"></h5>
+                            <span class="price" style="color: rgb(255, 166, 0);" id="prediction"></span>
+                            <!--<a href="#" class="add-cart-btn">Add to Cart</a>-->
+                            <!--<a href="javascript:printDiv('DataPrint')" class="add-cart-btn" >Print</a><br>-->
+                            <input type='button' value='Print Content' onclick='myApp.printDiv()' />
                         </div>
                     </div>
                 </div>
@@ -229,14 +238,35 @@
         <iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>
     </div>
 </div>
+
 <script>
+    // $(function () {
+    //     var model = document.getElementById("model").value;
+    //     console.log(model)
+    //     $("#model").val(model);
+    // });
+    // Use Select2 List TO Add Search to Normale Select List
+    $(document).ready(function () {
+        // Initialize select2
+        $("#make").select2();
+        $("#model").select2();
+    });
+    // Use Datapicker To Make Select Year DropDown
+    $(document).ready(function () {
+        $("#year").datepicker({
+            format: "yyyy",
+            viewMode: "years",
+            minViewMode: "years",
+            autoclose: true
+        });
+    })
 
     function load_car_models(make_id, model_id, fuel_type_id, vehicle_style_id) {
         var Make = document.getElementById(make_id);
         var car_model = document.getElementById(model_id);
         var fue_type = document.getElementById(fuel_type_id);
         var vehicle_style = document.getElementById(vehicle_style_id);
-        console.log(Make.value);
+        // console.log(Make.value);
         car_model.value = "";
         car_model.innerHTML = "";
         fue_type.value = "";
@@ -245,6 +275,10 @@
         vehicle_style.innerHTML = "";
         {% for Make in makes %}
         if (Make.value == "{{ Make }}") {
+            ImgName = Make.value + ".png"
+            var src = "../static/BrandImg/" + ImgName;
+            document.getElementById("BrandImg").src = src;
+            console.log(ImgName)
             // model
             {% for model in models %}
             {% if Make in model %}
@@ -267,13 +301,24 @@
             fue_type.options.add(newOption);
             {% endif %}
             {% endfor %}
+
+        }
+        {% endfor %}
+    }
+    function load_car_vehicle_style(model_id, vehicle_style_id) {
+        var car_model = document.getElementById(model_id);
+        var vehicle_style = document.getElementById(vehicle_style_id);
+        vehicle_style.value = "";
+        vehicle_style.innerHTML = "";
+        {% for car_model in models %}
+        if (car_model.value == "{{ car_model }}") {
             //Vehicle Style
             {% for vehicle_style in vehicle_styles %}
-            {% if Make in vehicle_style %}
+            {% if car_model in vehicle_style %}
             var newOption = document.createElement("option");
-            newOption.value = "{{ vehicle_style }}";
             {% for car_style in car_styles %}
             {% if car_style in vehicle_style %}
+            newOption.value = "{{ car_style }}";
             newOption.innerHTML = "{{ car_style }}";
             {% endif %}
             {% endfor %}
@@ -282,10 +327,28 @@
             {% endfor %}
         }
         {% endfor %}
-    }
-    // function PrintData() {
 
-    // }
+    }
+    // Add Select Option To 'model' Select List
+    function AddOption() {
+        var model = document.getElementById("model");
+        var option = document.createElement("option");
+        option.text = "Select Car Model";
+        model.add(option, model[0]);
+        document.getElementById('model').value = 'Select Car Model';
+    }
+    // Remove Dublicated Value in 'vehicle_style' Select List
+    function removeduplicate() {
+        var mycode = {};
+        $("select[id='vehicle_style'] > option").each(function () {
+            if (mycode[this.text]) {
+                $(this).remove();
+            } else {
+                mycode[this.text] = this.value;
+            }
+        });
+    }
+
     function form_handler(event) {
         event.preventDefault(); // Don't submit the form normally
     }
@@ -309,4 +372,5 @@
         xhr.send(fd);
     }
 </script>
+
 {% endblock %}

@@ -9,10 +9,13 @@ from Preprocess import preprocess_new
 reg_model = joblib.load('LinearRegressionModel.pkl')
 car = pd.read_csv('CarData.csv')
 # add new columns
+car['Make'] = car['Make'].str.replace(' ', '-')
+#car['Model'] = car['Model'].str.replace(' ', '-')
+
 car["Make-Model"] = car['Make'].astype(str) + " " + car["Model"]
 car["fuel_type"] = car['Make'].astype(str) + " " + car["Engine Fuel Type"].astype(str)
-car["vehicle_style_make"] = car['Make'].astype(str) + " " + car["Vehicle Style"].astype(str)
-
+car["vehicle_style_model"] = car['Make-Model'].astype(str) + " " + car["Vehicle Style"].astype(str)
+#car['BrandImg'] = car['Make'].astype(str) + ".png"
 
 # Intialize the Flask APP
 app = Flask(__name__)
@@ -23,33 +26,39 @@ cors = CORS(app)
 def index():
     makes = sorted(car['Make'].unique())
     models = sorted(car['Make-Model'].unique())
+    #car_models = sorted(car['Model'].unique())
     vehicle_sizes = sorted(car['Vehicle Size'].unique())
-    vehicle_styles = sorted(car['vehicle_style_make'].unique())
+    vehicle_styles = sorted(car['vehicle_style_model'].unique())
     fuel_types = sorted(car['fuel_type'].unique())
     Engine_Fuel_Types = sorted(car['Engine Fuel Type'].astype(str).unique())
     car_styles = sorted(car['Vehicle Style'].unique())
 
     makes.insert(0, 'Select Brand...')
+    ##models.insert(0, 'Select Brand...')
+
     return render_template('index.html', makes=makes,
                            models=models,
                            vehicle_sizes=vehicle_sizes,
                            vehicle_styles=vehicle_styles,
                            fuel_types=fuel_types,
                            Engine_Fuel_Types=Engine_Fuel_Types,
-                           car_styles=car_styles)
-
+                           car_styles=car_styles,)
 
 @app.route('/predict', methods=['GET', 'POST'])
 @cross_origin()
 def predict():
     # DropDownList
     make = request.form['make']
+    make  = make.replace('-', ' ')
+
     print(make)
     # Input
     try:
         model = request.form['model']
         model = model.split(' ', 1)[1]
-
+        model  = model.replace('-', ' ')
+       # print('*' * 50)
+       # print(model)
     except KeyError:
         meg = 'Please Select Car Brand Name!!'
         return meg
@@ -82,7 +91,10 @@ def predict():
     vehicle_size = request.form['vehicle_size']
     # DropDownList
     vehicle_style = request.form['vehicle_style']
-    vehicle_style = vehicle_style.split(' ', 1)[1]
+    #vehicle_style = vehicle_style.split(' ', 1)[1]
+    #vehicle_style = vehicle_style.split(' ', 1)[1]
+    #print('*' * 50)
+    #print(vehicle_style)
     X_new = pd.DataFrame({'make': [make],
                           'model': [model],
                           'year': [year],
